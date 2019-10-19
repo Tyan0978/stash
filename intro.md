@@ -1,6 +1,28 @@
 # Stash introduction
+什麼是 stash ?
+當你正在進行專案中某一部分的工作，裡面的東西處於一個比較雜亂的狀態，而你想轉到其他分支上進行一些工作。不想只為了待會要回到這個工作點，就把做到一半的工作進行提交。git stash 就是解決這個問題的命令。
+Stash 取得你工作目錄的 dirty state——也就是你修改過的被追蹤檔和暫存的變更——並將它保存到一個未完成變更的堆疊(stack)中，隨時可以重新套用。
 
-##git stash list:
+執行  git status，你可以看到你的 dirty state：
+
+	> $ git status
+	> On branch master
+	> Changes to be committed:
+  	> 	(use "git restore --staged <file>..." to unstage)
+        > 		modified:   test
+
+想切換分支，但還不想提交你正在進行中的工作，執行 git stash :
+
+	> $ git stash
+	>　Saved working directory and index state WIP on master: 4a69ae7 git is hard
+
+工作目錄就乾淨了 :
+
+	> $ git status
+	> On branch master
+	> nothing to commit, working tree clean
+
+## git stash list:
 git stash 後再輸入git status 會出現"nothing to commit,working tree clean"的字。
 那到底剛剛那些檔案存到哪兒?  這時候輸入git stash list會出現以下字樣
 >stash@{0}: WIP on master: ed7654c index test
