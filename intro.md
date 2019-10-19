@@ -49,7 +49,7 @@ git stash 後再輸入git status 會出現"nothing to commit,working tree clean"
 
 >	 no changes added to commit (use "git add" and/or "git commit -a")  
 
-## git stash drop / pop / clear
+## git stash drop / pop / clear: 
 如果想要移除已經 stash 的東西，
 可以執行 git stash drop 加上希望刪除的stash的名字 :
 	
