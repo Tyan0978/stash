@@ -28,6 +28,66 @@ git stash 後再輸入git status 會出現"nothing to commit,working tree clean"
 stash@{0}: WIP on master: ed7654c index test
 stash@{1}: WIP on master: 2b47536 start
 看起來目前只有二份狀態被存起來，最前面的 stash@{0} 是這個 stash 的代名詞，而後面的 WIP 字樣是「Work In Progress」，就是工作進行中的意思
+## git stash drop / pop / clear
+如果想要移除已經 stash 的東西，
+可以執行 git stash drop 加上希望刪除的stash的名字 :
+	
+	>> $ git stash list
+	>> stash@{0}: WIP on master: f0c9ca2 :thinking:
+	>> stash@{1}: WIP on master: e0d6928 I need shue fun
+	>> stash@{2}: WIP on master: a442e54 too much HW
+	>> stash@{3}: WIP on master: 2a30843 Zzzz
+	>> stash@{4}: WIP on master: 4a69ae7 git is hard
+	>> stash@{5}: WIP on master: ed7654c index test
+	>> stash@{6}: WIP on master: 2b47536 start
+	>> $ git stash drop stash@{5}
+	>> Dropped stash@{5} (4f6c34964d5e84e2968907e03c0e8c554e6ed58a)
+	>> $ git stash list
+	>> stash@{0}: WIP on master: f0c9ca2 :thinking:
+	>> stash@{1}: WIP on master: e0d6928 I need shue fun
+	>> stash@{2}: WIP on master: a442e54 too much HW
+	>> stash@{3}: WIP on master: 2a30843 Zzzz
+	>> stash@{4}: WIP on master: 4a69ae7 git is hard
+	>> stash@{5}: WIP on master: 2b47536 start
+
+想要先 apply 再 drop ， 可以執行  git  stash  pop 加上檔名，
+這樣就會有相同的效果 :
+
+	>> $ git stash list
+	>> stash@{0}: WIP on master: cebb4b6 final
+	>> stash@{1}: WIP on master: e0d6928 I need shue fun
+	>> stash@{2}: WIP on master: a442e54 too much HW
+	>> stash@{3}: WIP on master: 2a30843 Zzzz
+	>> stash@{4}: WIP on master: 4a69ae7 git is hard
+	>> stash@{5}: WIP on master: 2b47536 start
+	>> $ git stash pop
+	>> On branch master
+	>> Changes not staged for commit:
+	>>   (use "git add <file>..." to update what will be committed)
+	>>   (use "git restore <file>..." to discard changes in working directory)
+	>>         modified:   test
+
+	>> no changes added to commit (use "git add" and/or "git commit -a")
+	>> Dropped refs/stash@{0} (dbd595b1e3ec424585a13f058eb4bf943caa02cd)
+	>> $ git stash list
+	>> stash@{0}: WIP on master: e0d6928 I need shue fun
+	>> stash@{1}: WIP on master: a442e54 too much HW
+	>> stash@{2}: WIP on master: 2a30843 Zzzz
+	>> stash@{3}: WIP on master: 4a69ae7 git is hard
+	>> stash@{4}: WIP on master: 2b47536 start
+
+想要刪除所有 stash 可以不用一個一個慢慢git stash drop ，
+可以執行 git status clear 這樣就可以刪除所有 stash : $ git stash list
+
+	>> stash@{0}: WIP on master: e0d6928 I need shue fun
+	>> stash@{1}: WIP on master: a442e54 too much HW
+	>> stash@{2}: WIP on master: 2a30843 Zzzz
+	>> stash@{3}: WIP on master: 4a69ae7 git is hard
+	>> stash@{4}: WIP on master: 2b47536 start
+	>> $ git stash clear
+	>> $ git stash list
+	>> $
+
 
 
 
