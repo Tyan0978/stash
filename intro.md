@@ -95,9 +95,10 @@ git stash 後再輸入git status 會出現"nothing to commit,working tree clean"
 >	 stash@{3}: WIP on master: 4a69ae7 git is hard  
 >	 stash@{4}: WIP on master: 2b47536 start  
 
-想要刪除所有 stash 可以不用一個一個慢慢git stash drop ，
-可以執行 git status clear 這樣就可以刪除所有 stash : $ git stash list
+想要刪除所有 stash 可以不用一個一個慢慢git stash drop，
+可以執行 git status clear 這樣就可以刪除所有 stash : 
 
+>	 $ git stash list  
 >	 stash@{0}: WIP on master: e0d6928 I need shue fun  
 >	 stash@{1}: WIP on master: a442e54 too much HW  
 >	 stash@{2}: WIP on master: 2a30843 Zzzz  
